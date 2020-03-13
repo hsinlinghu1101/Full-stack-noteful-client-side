@@ -1,7 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme'
+
+import { shallow, mount } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import NoteListNav from './NoteListNav'
+import { BrowserRouter } from 'react-router-dom';
 
 describe(`NoteListNav component`, () => {
   const props = {
@@ -52,12 +54,22 @@ describe(`NoteListNav component`, () => {
   }
 
   it('renders a .NoteListNav by default', () => {
-    const wrapper = shallow(<NoteListNav />)
+    const wrapper = mount(
+    <BrowserRouter>
+    <NoteListNav />
+    </BrowserRouter>, { 
+      context:{folders:[]}} 
+   )
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
   it('renders a link in ul for each folder in array', () => {
-    const ul = shallow(<NoteListNav {...props} />)
+    const ul = mount(
+      <BrowserRouter>
+    <NoteListNav {...props} />
+    </BrowserRouter>, { 
+      context:{folders:[]}} 
+   )
       .find('ul')
     expect(toJson(ul)).toMatchSnapshot()
   })

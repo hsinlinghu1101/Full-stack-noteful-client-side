@@ -14,9 +14,10 @@ export default class Note extends React.Component {
 
   static contextType= NotefulContext;
 
-  handleDelete= event=>{
-
+  handleDelete= (event)=>{
+  event.preventDefault()
     let noteId= this.props.id
+    console.log(noteId)
 
    fetch(`${config.API_ENDPOINT}/notes/${noteId}`,{
      method:'DELETE',

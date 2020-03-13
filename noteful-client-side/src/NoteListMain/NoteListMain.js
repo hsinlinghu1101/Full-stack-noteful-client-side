@@ -7,12 +7,22 @@ import CircleButton from '../CircleButton/CircleButton'
 import './NoteListMain.css'
 
 export default class NoteListMain extends React.Component {
+  static defaultProps = {
+    match: {
+      params: {}
+    }
+  }
   static contextType= NotefulContext
   render(){
+    const folderId = parseInt(this.props.match.params.folderId)
+    const notes = this.context.notes.filter(note => note.folders_id === folderId || !folderId)
   return (
+    
     <section className='NoteListMain'>
+     
       <ul>
-        {this.context.notes.map(note =>
+        
+        {notes.map(note =>
           <li key={note.id}>
             <Note
               id={note.id}
@@ -21,7 +31,9 @@ export default class NoteListMain extends React.Component {
             />
           </li>
         )}
+       
       </ul>
+      
       <div className='NoteListMain__button-container'>
         <CircleButton
           tag={Link}
@@ -34,7 +46,10 @@ export default class NoteListMain extends React.Component {
           Note
         </CircleButton>
       </div>
+      
     </section>
+    
+    
   )
 }
 }

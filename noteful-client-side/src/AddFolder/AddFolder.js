@@ -2,6 +2,7 @@ import React from 'react';
 import config from '../config';
 import NotefulContext from '../NotefulContext'
 import NotefulForm from '../NotefulForm/NotefulForm'
+import './AddFolder.css'
 
 export default class AddFolder extends React.Component{
 state={
@@ -57,7 +58,7 @@ render(){
         <NotefulForm onSubmit={event => this.handleSubmit(event)}>
             <label htmlFor='folder-title'>Folder Name</label>
             <input type='text' name='folder-title' value={this.state.folderName.value} onChange={e => this.setFolderName(e.target.value)}
-            />
+            required/>
             <button>Submit</button>
         </NotefulForm>
         </div>
