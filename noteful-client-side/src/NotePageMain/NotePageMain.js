@@ -22,7 +22,8 @@ handleDeleteNote = (noteId) =>{
 
     const { notes=[] } =this.context;
     const { noteId }= this.props.match.params;
-    const note = findNote(notes, noteId) || { id: noteId, content: ''};
+    console.log(notes)
+    const note = findNote(notes, parseInt(noteId)) || { id: noteId, content: ''};
   return (
     <section className='NotePageMain'>
       <Note

@@ -57,6 +57,8 @@ class App extends Component {
           })
           .then(([notes, folders]) => {
             this.setState({ notes, folders });
+            
+           // console.log({ notes, folders })
           })
           .catch(error => {
             console.error({ error });

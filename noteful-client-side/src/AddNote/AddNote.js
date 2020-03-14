@@ -66,6 +66,10 @@ export default class Note extends React.Component {
             this.context.addNote(note);
             this.props.history.goBack()
         })
+        .then((folder) =>{
+            this.context.addFolder(folder);
+            this.props.history.goBack()
+           })
         .catch(error =>{
             console.error({error})
         })

@@ -23,7 +23,6 @@ static contextType= NotefulContext
               <span className='NoteListNav__num-notes'>
                 {countNotesForFolder(notes, folder.id)}
               </span>
-              {console.log(notes, folder.id)}
               {folder.folder_name}
             </NavLink>
           </li>
