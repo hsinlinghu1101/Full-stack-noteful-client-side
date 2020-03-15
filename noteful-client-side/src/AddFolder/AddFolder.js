@@ -43,7 +43,7 @@ handleSubmit=event=>{
         }
         return res.json()
     })
-    .then(() =>{
+    .then((folder) =>{
      this.context.addFolder(folder);
      this.props.history.goBack()
     })

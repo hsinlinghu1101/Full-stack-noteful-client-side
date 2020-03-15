@@ -17,7 +17,6 @@ export default class Note extends React.Component {
   handleDelete= (event)=>{
   event.preventDefault()
     let noteId= this.props.id
-    console.log(noteId)
 
    fetch(`${config.API_ENDPOINT}/notes/${noteId}`,{
      method:'DELETE',
@@ -41,6 +40,7 @@ export default class Note extends React.Component {
   render(){
 
   const {name, id, modified}=this.props
+  
   return (
     <div className='Note'>
       <h2 className='Note__title'>

@@ -48,7 +48,7 @@ export default class Note extends React.Component {
            folders_id: this.state.folderId.value,
             content: this.state.content.value
         }
-
+      
         fetch(`${config.API_ENDPOINT}/notes`, {
             method: 'POST',
             headers: {
@@ -66,10 +66,7 @@ export default class Note extends React.Component {
             this.context.addNote(note);
             this.props.history.goBack()
         })
-        .then((folder) =>{
-            this.context.addFolder(folder);
-            this.props.history.goBack()
-           })
+        
         .catch(error =>{
             console.error({error})
         })

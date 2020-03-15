@@ -21,14 +21,16 @@ handleDeleteNote = (noteId) =>{
   render(){
 
     const { notes=[] } =this.context;
+    
     const { noteId }= this.props.match.params;
-    console.log(notes)
     const note = findNote(notes, parseInt(noteId)) || { id: noteId, content: ''};
+    
+    //const note = findNote(notes, noteId) || { id: 0, content: ''};
   return (
     <section className='NotePageMain'>
       <Note
-        id={note.id}
-        name={note.name}
+        id={(note.id)}
+        name={note.notes_name}
         modified={note.modified}
         onDeleteNote={this.handleDeleteNote}
       />

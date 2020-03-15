@@ -21,8 +21,8 @@ export default class NotePageNav extends React.Component{
     const { notes, folders, } = this.context
     const { noteId } = this.props.match.params
     const note = findNote(notes, noteId) || {}
-    const folder = findFolder(folders, note.folderId)
-
+    const folder = findFolder(folders, note.folders_id)
+ 
   return (
     <div className='NotePageNav'>
       <CircleButton
@@ -36,11 +36,8 @@ export default class NotePageNav extends React.Component{
         Back
       </CircleButton>
       {folder && (
-        <h3 className='NotePageNav__folder-name'>
-          {folder.name}
-        </h3>
-      )}
-    </div>
+        <h3 className='NotePageNav__folder-name'>{folder.folder_name}</h3>)}
+        </div>
   )
 }
 }

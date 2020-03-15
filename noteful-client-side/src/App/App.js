@@ -18,31 +18,6 @@ class App extends Component {
         folders: []
     };
 
-     setNoteful =(notes, folders) =>{
-         this.setState({
-             notes,
-             folders
-         })
-     }
-
-     addFolder = folder =>{
-         this.setState({
-             folders:[...this.state.folders, folder]
-         })
-     }
-
-     addNote = note =>{
-        this.setState({
-            notes:[...this.state.notes, note]
-        })
-    }
-
-    deleteNote = noteId =>{
-        this.setState({
-       notes: this.state.notes.filter(note => note.id !== Number(noteId))
-        })
-    }
-
     componentDidMount() {
         Promise.all([
             fetch(`${config.API_ENDPOINT}/notes`),
@@ -58,12 +33,40 @@ class App extends Component {
           .then(([notes, folders]) => {
             this.setState({ notes, folders });
             
-           // console.log({ notes, folders })
+           
           })
           .catch(error => {
             console.error({ error });
           });
       }
+
+     setNoteful =(notes, folders) =>{
+         this.setState({
+             notes,
+             folders
+         })
+     }
+
+     addFolder = folder =>{
+         this.setState({
+             folders:[...this.state.folders, folder]
+         })
+     }
+    
+     addNote = note =>{
+         console.log(note)
+        this.setState({
+            notes:[...this.state.notes, note]
+        })
+    }
+   
+    deleteNote = noteId =>{
+        this.setState({
+       notes: this.state.notes.filter(note => note.id !== Number(noteId))
+        })
+    }
+
+    
 
     renderNavRoutes() {
         
